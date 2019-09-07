@@ -1,0 +1,107 @@
+/*
+* PATHs
+*/
+
+$image: '../images/';
+
+
+/*
+* Fonts
+*/
+
+$sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+//Defined in typography
+$open-sans: 'Open Sans';
+
+$primary-font: $open-sans;
+$secondary-font: $sans-serif;
+
+/*
+* COLORS
+*/
+
+$color-black: #231f20;
+$color-white: #fff;
+$color-red: #ff0000;
+
+$color-base: $color-black;
+
+
+/*
+* Transition
+*/
+
+$transition: all .3s ease-in-out;
+
+
+/*
+* Font Size
+*/
+
+$font-size-base: 16px;
+
+// Should be same as $column-list, size:(xs, sm, md, lg)
+$heading-font-size: (32px, 42px, 56px, 80px);
+$subheading-font-size: (26px, 32px, 42px, 56px);
+
+
+/*
+* Gutter
+*/
+
+$gutter: 15px;
+
+
+/* 
+* Breakpoints
+*/
+
+$breakpoints: ( 
+    'width-smb': 360px,
+    'width-mb': 450px,
+    'width-xs': 576px,
+    'width-sm': 768px,
+    'width-md': 992px,
+    'width-lg': 1200px,
+    'width-xl': 1440px,
+    'width-wd': 1600px,
+
+    'height-xs': 400px,
+    'height-sm': 600px,
+    'height-md': 770px,
+    'height-hg': 900px
+);
+
+
+
+/*
+* Grid Constants
+*/
+
+//total number of grid columns
+$grid-columns: 12;
+
+//Total Column list
+$column-list: 'xs', 'sm', 'md', 'lg';
+
+$containers: (
+  sm: 720px,
+  md: 960px,
+  lg: 1170px
+);
+
+$enable-container: true;
+
+
+/* 
+* Z-Index
+*/
+
+$z-index: (
+  modal              : 200,
+  header             : 100,
+  navigation         : 90,
+);
+
+
+

@@ -1,0 +1,97 @@
+
+@function breakpoint-min($name, $breakpoints: $breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+// Makes the @content apply to the given breakpoint and wider.
+@mixin breakpoint-up ($name, $breakpoints: $breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// @media of Min Width and Min Height
+@mixin breakpoint($width: '', $height: '') {
+    @if map-has-key($breakpoints, 'width-#{$width}') {
+        @if map-has-key($breakpoints, 'height-#{$height}') {
+            @media only screen and (min-width: map-get($breakpoints, 'width-#{$width}')) and (min-height: map-get($breakpoints, 'height-#{$height}')) {
+                @content;
+            }
+        }
+        @else {
+            @media only screen and (min-width: map-get($breakpoints, 'width-#{$width}')) {
+                @content;
+            }
+        }
+    }
+    @else {
+        @if map-has-key($breakpoints, 'height-#{$height}') {
+            @media only screen and (min-height: map-get($breakpoints, 'height-#{$height}')) {
+                @content;
+            }
+        }
+        @else {
+            @warn 'Breakpoint: width and height not found.';
+        }
+    }
+}
+
+
+// @media of Max Width and Max Height
+@mixin breakpoint-max($width: '', $height: '') {
+    @if map-has-key($breakpoints, 'width-#{$width}') {
+        @if map-has-key($breakpoints, 'height-#{$height}') {
+            @media only screen and (max-width: map-get($breakpoints, 'width-#{$width}')-1) and (max-height: map-get($breakpoints, 'height-#{$height}')) {
+                @content;
+            }
+        }
+        @else {
+            @media only screen and (max-width: map-get($breakpoints, 'width-#{$width}')-1) {
+                @content;
+            }
+        }
+    }
+    @else {
+        @if map-has-key($breakpoints, 'height-#{$height}') {
+            @media only screen and (max-height: map-get($breakpoints, 'height-#{$height}')) {
+                @content;
+            }
+        }
+        @else {
+            @warn 'Breakpoint: width and height not found.';
+        }
+    }
+}
+
+// @media of Min Width and Max Width
+@mixin breakpoint-width($widthmin: '', $widthmax: '') {
+    @if map-has-key($breakpoints, 'width-#{$widthmin}') {
+        @if map-has-key($breakpoints, 'width-#{$widthmax}') {
+            @media (min-width: map-get($breakpoints, 'width-#{$widthmin}')) and (max-width: map-get($breakpoints, 'width-#{$widthmax}')-1) {
+                @content;
+            }
+        }
+        @else {
+            @media only screen and (min-width: map-get($breakpoints, 'width-#{$widthmin}')) {
+                @content;
+            }
+        }
+    }
+    @else {
+        @if map-has-key($breakpoints, 'width-#{$widthmax}') {
+            @media only screen and (max-width: map-get($breakpoints, 'width-#{$widthmax}')-1) {
+                @content;
+            }
+        }
+        @else {
+            @warn 'Breakpoint: width and height not found.';
+        }
+    }
+}
+

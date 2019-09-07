@@ -1,0 +1,28 @@
+/**
+    Main style file
+**/
+
+// Vendor: Plugins
+@import 'include/plugins/normalize';
+
+// Webfonts
+@import 'include/webfonts';
+
+// Vendor: Functions/Mixins
+@import 'include/breakpoints';
+
+// Init
+@import 'include/vars';
+
+// Utility
+@import 'include/typography';
+@import 'include/grid';
+
+// Vendor: Plugins
+
+
+// Components
+
+
+// Base global styles
+@import 'include/base';

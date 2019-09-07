@@ -1,0 +1,29 @@
+// Row and coulmn
+.grid-row {
+    margin: 0 -$gutter;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+// Output: col-1, col-2..
+@for $i from 1 through $grid-columns {
+    .grid-col-#{$i} {
+        padding: 0 $gutter;
+        flex: 0 0 #{100%/($grid-columns/$i)};
+        max-width: #{100%/($grid-columns/$i)};
+    }
+}
+
+// Output: col-xs-1, col-lg-5..
+@for $column from 1 through length($column-list) {
+    $column-item: nth($column-list, $column);
+    @include breakpoint($column-item) {
+        @for $i from 1 through $grid-columns {
+            .grid-col-#{$column-item}-#{$i} {
+                padding: 0 $gutter;
+                flex: 0 0 #{100%/($grid-columns/$i)};
+                max-width: #{100%/($grid-columns/$i)};
+            }
+        }
+    }
+}
