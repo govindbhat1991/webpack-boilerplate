@@ -1,0 +1,28 @@
+.btn {
+    @extend %button;
+}
+
+.btn-primary {
+    display: inline-block;
+    color: $base;
+    font-family: $secondary-font;
+    text-align: center;
+    padding: 10px 15px;
+    line-height: 1;
+    background-color: transparent;
+    transition: $transition;
+    @include breakpoint(xs) {
+        padding: 13px 18px;
+    }
+    @include breakpoint(lg) {
+        font-size: 18px;
+    }
+    &:hover {
+        color: $white;
+        background-color: $base;
+    }
+}
+
+.btn-secondary {
+    &:hover {}
+}

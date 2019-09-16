@@ -1,3 +1,21 @@
+// Container make true in variable if have a max-width
+.container {
+    @if($enable-container == true) {
+        max-width: 100%;
+        @include breakpoint(sm) {
+            max-width: map-get($containers, md);
+        }
+        @include breakpoint(md) {
+            max-width: map-get($containers, tab);
+        }
+        @include breakpoint(lg) {
+            max-width: map-get($containers, lg);
+        }
+    }
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
 // Row and coulmn
 .grid-row {
     margin: 0 -$gutter;
@@ -23,6 +41,55 @@
                 padding: 0 $gutter;
                 flex: 0 0 #{100%/($grid-columns/$i)};
                 max-width: #{100%/($grid-columns/$i)};
+            }
+        }
+    }
+}
+
+// Custom Classes ( like bootstrap )
+
+.image-fluid {
+    width: 100%;
+    display: block;
+}
+
+@for $i from 1 through length($display-list) {
+    $display-item: nth($display-list, $i);
+    .show-#{$display-item} {
+        display: $display-item;
+    }
+}
+.show-none {
+    display: none;
+}
+
+@for $column from 1 through length($column-list) {
+    $column-item: nth($column-list, $column);
+    @include breakpoint($column-item) {
+        @for $i from 1 through length($display-list) {
+            $display-item: nth($display-list, $i);
+            .show-#{$column-item}-#{$display-item} {
+                display: $display-item;
+            }
+        }
+        .show-#{$column-item}-none {
+            display: none;
+        }
+    }
+}
+
+@for $i from 1 through ($grid-columns/2) {
+    .order-#{$i} {
+        order: $i;
+    }
+}
+
+@for $column from 1 through length($column-list) {
+    $column-item: nth($column-list, $column);
+    @include breakpoint($column-item) {
+        @for $i from 1 through ($grid-columns/2) {
+            .order-#{$column-item}-#{$i} {
+                order: $i;
             }
         }
     }
